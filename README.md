@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Canvas Chat
 
-## Getting Started
+A Next.js application that provides an AI-powered project planning assistant using OpenAI's GPT-3.5 Turbo model.
 
-First, run the development server:
+## Features
+
+- 🤖 AI-powered project planning assistance
+- 💬 Simple chat interface for project discussions
+- 🎨 Modern, responsive UI with Tailwind CSS
+- 🚀 Ready for Vercel deployment
+- 🔧 Easy local development setup
+
+## Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+- OpenAI API key
+
+## Local Development
+
+### 1. Clone and Install
+
+```bash
+git clone <your-repo-url>
+cd canvas-chat
+npm install
+```
+
+### 2. Environment Setup
+
+Create a `.env.local` file in the root directory:
+
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+**Important**: Get your OpenAI API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+
+### 3. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Test the Application
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Type a project planning prompt in the text area
+2. Click "Get AI Response"
+3. View the AI-generated response below
 
-## Learn More
+## Deployment to Vercel
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Push to GitHub
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Deploy on Vercel
 
-## Deploy on Vercel
+1. Go to [Vercel](https://vercel.com) and sign in
+2. Click "New Project"
+3. Import your GitHub repository
+4. Add environment variable:
+   - Key: `OPENAI_API_KEY`
+   - Value: Your OpenAI API key
+5. Deploy!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Environment Variables on Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Make sure to add the `OPENAI_API_KEY` environment variable in your Vercel project settings.
+
+## Project Structure
+
+```
+canvas-chat/
+├── src/
+│   ├── app/
+│   │   ├── api/chat/route.ts    # OpenAI API endpoint
+│   │   ├── page.tsx             # Main chat interface
+│   │   ├── layout.tsx           # Root layout
+│   │   └── globals.css          # Global styles
+│   └── lib/
+│       └── openai.ts            # OpenAI client configuration
+├── .env.example                 # Environment template
+└── README.md                    # This file
+```
+
+## API Endpoints
+
+### POST /api/chat
+
+Sends a prompt to OpenAI and returns the AI response.
+
+**Request Body:**
+```json
+{
+  "prompt": "Help me plan a new feature launch"
+}
+```
+
+**Response:**
+```json
+{
+  "response": "Here's a comprehensive plan for your feature launch..."
+}
+```
+
+## Technologies Used
+
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **OpenAI API** - AI language model integration
+
+## Development Commands
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"Missing OPENAI_API_KEY" error**
+   - Ensure `.env.local` exists with your API key
+   - Restart the development server after adding the key
+
+2. **API calls failing**
+   - Check your OpenAI API key is valid
+   - Ensure you have sufficient API credits
+   - Check the browser console for error details
+
+3. **Build errors**
+   - Run `npm run lint` to check for TypeScript errors
+   - Ensure all dependencies are installed
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test locally
+5. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details
+
+## Support
+
+For issues and questions:
+- Check the troubleshooting section above
+- Open an issue on GitHub
+- Review the Next.js and OpenAI documentation
